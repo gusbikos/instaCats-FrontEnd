@@ -1,5 +1,9 @@
-import React from "react"
+import React from "react";
 
 // This will contain the buttons for Login, Logout, Signup
 
-export default Header
+function Header(){
+
+}
+
+export default Header;
