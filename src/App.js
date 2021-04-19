@@ -20,28 +20,27 @@ function App() {
     .then(r => r.json())
     .then((user) => { 
       console.log(user)
-      setCurrentUser(user);
+      setCurrentUser(user)
   })
 }
   }, []);
   
   return (
     <>
-      <Header currentUser={currentUser}/>
+      <Header currentUser={currentUser} setCurrentUser={setCurrentUser}/>
       <main>
         <Switch>
           <Route exact path="/login">
             <Login setCurrentUser={setCurrentUser}/>
           </Route>
           <Route exact path="/createaccount">
-            <CreateAccount/>
+            <CreateAccount setCurrentUser={setCurrentUser}/>
           </Route>
           <Route exact path="/profile">
-            <Profile currentUser={currentUser}/>
+            <Profile currentUser={currentUser} setCurrentUser={setCurrentUser}/>
           </Route>
           <Route>
             <Route path="/">
-              <h1> Please Login or Signup</h1>
             </Route>
           </Route>
         </Switch>

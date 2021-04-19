@@ -1,13 +1,16 @@
-import React from "react"
+import React, { useState } from "react"
 import CreatePost from "./CreatePost"
+import EditProfileForm from "./EditProfileForm"
 import PostContainer from "./PostContainer"
 
-function Profile({currentUser}) {
-    // const [formData, setFormData] = useState({
-        
-    // })
 
-    // 
+function Profile({ setCurrentUser, currentUser}) {
+    const [showForm, setShowForm] = useState(false)
+
+    function handleShowForm() {
+        setShowForm(!showForm)
+    }
+
     return (
         <div>
         <h3>Profile</h3>
@@ -15,8 +18,11 @@ function Profile({currentUser}) {
         <h5> Post Container</h5>
             <CreatePost/>
             <PostContainer/>
+            <button onClick={handleShowForm}>Edit Profile</button>
+            {showForm ? <EditProfileForm setCurrentUser={setCurrentUser} currentUser={currentUser}/> : null}
         </div>
     )
 }
 
 export default Profile
+
