@@ -4,7 +4,6 @@ import PostContainer from "./PostContainer"
 
 function Profile() {
     // 
-
     return (
         <>
             <CreatePost/>

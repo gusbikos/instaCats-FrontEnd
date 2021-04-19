@@ -6,6 +6,7 @@ import CreateAccount from './CreateAccount'
 import Profile from './Profile'
 
 function App() {
+  // Will hold the current user state
   
   return (
     <div className="App">
