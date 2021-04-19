@@ -27,7 +27,8 @@ function Login({setCurrentUser}){
         })
         .then((r) => r.json())
         .then((user) => {
-            setCurrentUser(user);
+            console.log(user)
+            setCurrentUser(user)
             history.push("/");
         });
     }
@@ -38,24 +39,23 @@ function Login({setCurrentUser}){
     
     return (
         <div>
-            <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <h1>Login</h1>
                 <label>Username</label>
                 <input
-                type="text"
-                name="username"
-                autoComplete="off"
-                value={formData.username}
-                onChange={handleChange}
+                    type="text"
+                    name="username"
+                    autoComplete="off"
+                    value={formData.username}
+                    onChange={handleChange}
                 />
                 <label>Password</label>
                 <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                autoComplete="current-password"
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    autoComplete="current-password"
                 />
                 {/* {errors.map((error) => (
                 <p style={{ color: "red" }} key={error}>
@@ -68,4 +68,4 @@ function Login({setCurrentUser}){
     )
 
 }
-export default Login
+export default Login;
