@@ -3,6 +3,10 @@ import CreatePost from "./CreatePost"
 import PostContainer from "./PostContainer"
 
 function Profile({currentUser}) {
+    // const [formData, setFormData] = useState({
+        
+    // })
+
     // 
     return (
         <div>

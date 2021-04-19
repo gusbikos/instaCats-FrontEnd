@@ -24,23 +24,29 @@ function App() {
   })
 }
   }, []);
- 
   
   return (
-    <div className="App">
+    <>
       <Header currentUser={currentUser}/>
-      <Switch>
-        <Route exact path="/login">
-          <Login setCurrentUser={setCurrentUser}/>
-        </Route>
-        <Route exact path="/createaccount">
-          <CreateAccount/>
-        </Route>
-        <Route exact path="/profile">
-          <Profile currentUser={currentUser}/>
-        </Route>
-      </Switch>
-    </div>
+      <main>
+        <Switch>
+          <Route exact path="/login">
+            <Login setCurrentUser={setCurrentUser}/>
+          </Route>
+          <Route exact path="/createaccount">
+            <CreateAccount/>
+          </Route>
+          <Route exact path="/profile">
+            <Profile currentUser={currentUser}/>
+          </Route>
+          <Route>
+            <Route path="/">
+              <h1> Please Login or Signup</h1>
+            </Route>
+          </Route>
+        </Switch>
+      </main>
+    </>
   );
 }
 

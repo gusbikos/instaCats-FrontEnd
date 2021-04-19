@@ -3,7 +3,7 @@ import PostCard from "./PostCard"
 
 function CreatePost() {
     return (
-        <CreatePost/>
+        <PostCard/>
     )
 }
 
