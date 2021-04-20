@@ -8,16 +8,17 @@ import { useHistory } from "react-router-dom";
 // Go to backend and in users controller make a login function to get access to 1 user in the frontend.
 // In handleSubmit function we make a POST request, strigify attributes from User (username, and password), and we get 
 // back a user object and set that as our state. The state object will be passed down from App. 
-function Login({setCurrentUser}){
+function Login({ setCurrentUser }){
     const [formData, setFormData] = useState({
         username: "",
         password: "",
     }) 
-    const history = useHistory();
+    const history = useHistory()
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch("http://localhost:4000/login", {
+
+        fetch('http://localhost:4000/login', {
             method: "POST",
             headers: { 
                 'Content-Type': 'application/json',
@@ -27,8 +28,9 @@ function Login({setCurrentUser}){
         })
         .then((r) => r.json())
         .then((user) => {
+            localStorage.setItem("userId", user.id)
             setCurrentUser(user)
-            history.push("/profile")
+            history.push('/profile')
         })
     }
 
@@ -40,29 +42,28 @@ function Login({setCurrentUser}){
         <div>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <h1>Login</h1>
                 <label>Username</label>
-                <input
-                type="text"
-                name="username"
-                autoComplete="off"
-                value={formData.username}
-                onChange={handleChange}
+                    <input
+                    type="text"
+                    name="username"
+                    autoComplete="off"
+                    value={formData.username}
+                    onChange={handleChange}
                 />
                 <label>Password</label>
-                <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                autoComplete="current-password"
+                    <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    autoComplete="current-password"
                 />
                 {/* {errors.map((error) => (
                 <p style={{ color: "red" }} key={error}>
                     {error}
                 </p>
                 ))} */}
-                <input type="submit" value="Login" />
+                    <input type="submit" value="Login" />
             </form>
         </div>
     )

@@ -1,9 +1,8 @@
 import React from "react";
 import PostList from "./PostList";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-function PostContainer( {currentUser} ) {
-    const [posts, setPosts] = useState([]);
+function PostContainer({ currentUser, setPosts, posts } ) {
 
     useEffect(() => {
         fetch("http://localhost:4000/posts")
@@ -12,7 +11,7 @@ function PostContainer( {currentUser} ) {
     }, []);
 
     return(
-        <PostList posts={posts} currentUser={currentUser} />
+        <PostList posts={posts} currentUser={currentUser}/>
     )
 
 }
