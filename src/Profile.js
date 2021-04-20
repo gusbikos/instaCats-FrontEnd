@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import CreatePost from "./CreatePost"
 import EditProfileForm from "./EditProfileForm"
 import PostContainer from "./PostContainer"
@@ -17,7 +17,7 @@ function Profile({ setCurrentUser, currentUser}) {
         <h4>Create Post</h4>
         <h5> Post Container</h5>
             <CreatePost/>
-            <PostContainer/>
+            <PostContainer />
             <button onClick={handleShowForm}>Edit Profile</button>
             {showForm ? <EditProfileForm setCurrentUser={setCurrentUser} currentUser={currentUser}/> : null}
         </div>

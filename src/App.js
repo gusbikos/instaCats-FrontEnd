@@ -24,6 +24,11 @@ function App() {
   })
 }
   }, []);
+
+  function newAccount(newAccountFromForm){
+    console.log(newAccountFromForm)
+    setCurrentUser(newAccountFromForm)
+  }
   
   return (
     <>
@@ -34,7 +39,7 @@ function App() {
             <Login setCurrentUser={setCurrentUser}/>
           </Route>
           <Route exact path="/createaccount">
-            <CreateAccount setCurrentUser={setCurrentUser}/>
+            <CreateAccount setCurrentUser={setCurrentUser} newAccount={newAccount}/>
           </Route>
           <Route exact path="/profile">
             <Profile currentUser={currentUser} setCurrentUser={setCurrentUser}/>

@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function EditProfileForm( {setCurrentUser, currentUser}) {
         const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ function EditProfileForm( {setCurrentUser, currentUser}) {
             password: "",
         })
     
+        const history = useHistory();
+        
         function handleSubmit(e) {
             e.preventDefault()
             
@@ -31,6 +34,17 @@ function EditProfileForm( {setCurrentUser, currentUser}) {
             setFormData({...formData, [e.target.name]: e.target.value})
         }
     
+        function handleDelete(id){
+            fetch(`http://localhost:4000/profile/${id}`, {
+                method: 'DELETE',
+            })
+            .then((r) => r.json())
+            .then(() => {
+                setCurrentUser(null)
+                history.push("/")
+            })
+            
+        }
     
         return (
             <div>
@@ -81,6 +95,7 @@ function EditProfileForm( {setCurrentUser, currentUser}) {
                     ))} */}
                     <input type="submit" value="Submit" />
                 </form>
+                <button onClick={handleDelete}>Delete</button>
             </div>
     )
 }

@@ -1,9 +1,16 @@
 import React from "react"
 import PostCard from "./PostCard"
 
-function PostList() {
+function PostList({posts}) {
+
+    const allPosts = posts.map((post) => {
+        return <PostCard key={post.id} post={post} />
+    })
+
     return (
-        <PostCard/>
+        <ul className="cards">
+            {allPosts}
+        </ul>
     )
 }
 

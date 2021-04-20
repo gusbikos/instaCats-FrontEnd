@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 
 // Create Account Form Goes Here // 
 // Props passed down from App // 
-function CreateAccount({setCurrentUser}) {
+function CreateAccount({setCurrentUser, newAccount}) {
     const [formData, setFormData] = useState({
         name: "",
         username: "", 
@@ -17,6 +17,8 @@ function CreateAccount({setCurrentUser}) {
     function handleSubmit(e) {
         e.preventDefault()
 
+
+
         fetch("http://localhost:4000/users", {
             method: 'POST',
             headers: {
@@ -29,7 +31,7 @@ function CreateAccount({setCurrentUser}) {
         // Why doesnt response.json work here? Error is:
         //VM751:1 Uncaught (in promise) SyntaxError: Unexpected end of JSON input
         .then(user => {
-            setCurrentUser(user)
+            newAccount(user)
             console.log(user)
             history.push("/profile")
         })
