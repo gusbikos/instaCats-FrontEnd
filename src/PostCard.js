@@ -9,7 +9,8 @@ function PostCard({id, photo, caption, likes }) {
             <h4>{caption}</h4>
             <p>Likes: {likes}</p>
         </li>
-    <AddComment/>
+    {/* {CommentsList} => {CommentCard} */}
+    {/* <AddComment/> */}
     </>
     );
 }

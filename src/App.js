@@ -5,22 +5,28 @@ import Login from './Login'
 import CreateAccount from './CreateAccount'
 import Profile from './Profile'
 import { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
+
 
 function App() {
   // Will hold the current user state
   const [currentUser, setCurrentUser] = useState(null);
-  
+  const history = useHistory()
 
 
   useEffect(() => {
-    const token = true;
-    if (token){
-    fetch("http://localhost:4000/profile")
+    // const token = true;
+    const userId = localStorage.getItem("userId");
+    
+    console.log("localStorage UserId", userId);
+
+    if (userId){
+      // debugger
+    fetch(`http://localhost:4000/profile/${parseInt(userId)}`)
     .then(r => r.json())
     .then((user) => { 
-      console.log(user)
       setCurrentUser(user)
+      history.push("/profile")
   })
 }
   }, []);
@@ -30,6 +36,7 @@ function App() {
     setCurrentUser(newAccountFromForm)
   }
   
+  console.log("CURRENT-APP", currentUser)
   return (
     <>
       <Header currentUser={currentUser} setCurrentUser={setCurrentUser}/>

@@ -17,8 +17,6 @@ function CreateAccount({setCurrentUser, newAccount}) {
     function handleSubmit(e) {
         e.preventDefault()
 
-
-
         fetch("http://localhost:4000/users", {
             method: 'POST',
             headers: {
@@ -27,10 +25,12 @@ function CreateAccount({setCurrentUser, newAccount}) {
             },
             body: JSON.stringify(formData)
         })
-        .then((r) => r.text())
+        .then((r) => r.json())
         // Why doesnt response.json work here? Error is:
         //VM751:1 Uncaught (in promise) SyntaxError: Unexpected end of JSON input
         .then(user => {
+            localStorage.setItem("userId", user.id)
+            console.log("LOCAL", localStorage.getItem("userId"));
             newAccount(user)
             console.log(user)
             history.push("/profile")
