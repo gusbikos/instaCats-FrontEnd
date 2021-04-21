@@ -1,38 +1,113 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Reset CSS */
+* { box-sizing: border-box;
+    margin: 0;
+    padding: 0; }
+
+*, button, input {
+    font-family: 'Roboto', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+html, body {
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
+}
+
+svg {
+  fill: var(--text);
+  display: block;
+}
+
+/* button {
+  background: 0 0;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  outline: none;
+
+  width: fit-content;
+  height: fit-content;
+} */
+
+:root {
+  --primary: #FFFFFF;
+  --secondary: #FAFAFA;
+  --outline: #B3B3B3;
+  --text: #262626;
+  --like: #ED4756;
+  --link: #3898F3;
+}
+
+.header {
+  width: 100%;
+  height: 45px;
+  position: fixed;
+  top: 0; left: 0;
+
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+  padding: 0 16px;
+  background-color: var(--secondary);
+  border-bottom: 1px solid var(--outline);
 }
 
-.App-link {
-  color: #61dafb;
+.header .container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header .section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  margin: 45px 0;
+
+  display: flex;
+  flex-direction: row;
+
+  background-color: var(--primary);
+}
+.page::-webkit-scrollbar {
+  display: none;
+}
+
+.page section {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.page .content {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.page .sidebar {
+  width: 100%;
+  height: 100%;
+
+  display: none;
+  flex-direction: column;
 }

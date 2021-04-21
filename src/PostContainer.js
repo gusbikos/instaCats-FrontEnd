@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 function PostContainer({ currentUser, setPosts, posts, handleDelete }) {
     const [showAll, setShowAll] = useState(false)
     
-
     useEffect(() => {
         fetch("http://localhost:4000/posts")
         .then((r) => r.json())
@@ -33,7 +32,7 @@ function PostContainer({ currentUser, setPosts, posts, handleDelete }) {
     }
 
     return(
-        <div>
+        <div className="page">
             {/* <button onClick={}>Show All Posts</button> */}
             <button onClick ={handleShow }>{showAll ? 'Show My Posts' : "Show All"}</button>
             <PostList 

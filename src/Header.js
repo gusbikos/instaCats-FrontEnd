@@ -11,14 +11,14 @@ function Header({setCurrentUser, currentUser}){
     }
 
     return (
-        <>
-        <h1> instaCats! </h1>
-        <nav>
-            {currentUser ? (
-            <h2>Welcome {currentUser.username}</h2>) : (<h2>Please <Link to="/login">Login</Link> or <Link to="/createaccount">Sign Up</Link></h2>)}
-            <Link to="/" onClick={() => handleLogout()}>Logout</Link>
-        </nav>
-        </>
+        <div className="header">
+            <h1> instaCats! </h1>
+            <nav>
+                {currentUser ? (
+                <h2>Welcome {currentUser.username}</h2>) : (<h2>Please <Link to="/login">Login</Link> or <Link to="/createaccount">Sign Up</Link></h2>)}
+                <Link to="/" onClick={() => handleLogout()}>Logout</Link>
+            </nav>
+        </div>
     )
 }
 

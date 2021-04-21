@@ -21,7 +21,7 @@ function PostList({ currentUser, posts, setPosts, handleDelete }) {
     // console.log(posts)
 
     return (
-        <ul className="cards">
+        <ul className="content">
             {allPosts}
         </ul>
     )
