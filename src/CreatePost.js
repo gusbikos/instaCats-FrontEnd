@@ -15,10 +15,10 @@ function CreatePost({ currentUser, handleAddPost }) {
     function handleSubmit(e) {
         e.preventDefault()
 
-        // setFormData ({ 
-        //     photo: "", 
-        //     caption: ""
-        // })
+        setFormData ({ 
+            photo: "", 
+            caption: ""
+        })
 
         fetch('http://localhost:4000/posts', {
             method: 'POST',

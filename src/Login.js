@@ -44,19 +44,19 @@ function Login({ setCurrentUser }){
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
                     <input
-                    type="text"
-                    name="username"
-                    autoComplete="off"
-                    value={formData.username}
-                    onChange={handleChange}
+                        type="text"
+                        name="username"
+                        autoComplete="off"
+                        value={formData.username}
+                        onChange={handleChange}
                 />
                 <label>Password</label>
                     <input
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    autoComplete="current-password"
+                        type="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        autoComplete="current-password"
                 />
                 {/* {errors.map((error) => (
                 <p style={{ color: "red" }} key={error}>
