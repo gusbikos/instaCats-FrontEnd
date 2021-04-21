@@ -8,6 +8,12 @@ function Profile({ setCurrentUser, currentUser}) {
     const [showCreatePostForm, setShowCreatePostForm] = useState(false)
     const [posts, setPosts] = useState([])
 
+    function handleDelete(deletePost) {
+        console.log(deletePost)
+        const updatePosts = posts.filter((post) => post.id !== deletePost.id)
+        setPosts(updatePosts)
+    }
+
     function handleShowForm() {
         setShowForm(!showForm)
     }
@@ -25,7 +31,7 @@ function Profile({ setCurrentUser, currentUser}) {
         <div>
             <h3>Profile</h3>
             <h5> Post Container</h5>
-                <PostContainer currentUser={currentUser} setPosts={setPosts} posts={posts} handleAddPost={handleAddPost}/>
+                <PostContainer currentUser={currentUser} setPosts={setPosts} posts={posts} handleAddPost={handleAddPost} handleDelete={handleDelete}/>
                 <button onClick={handleShowForm}>Edit Profile</button>
                 {showForm ? <EditProfileForm setCurrentUser={setCurrentUser} currentUser={currentUser}/> : null}
             <h4>Create Post</h4>

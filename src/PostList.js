@@ -1,7 +1,7 @@
 import React from "react"
 import PostCard from "./PostCard"
 
-function PostList({ currentUser, posts, setPosts }) {
+function PostList({ currentUser, posts, setPosts, handleDelete }) {
 
     // Ask about setting a default value of likes to 0.  On browswer nothing
     // is showing after likes.
@@ -11,7 +11,9 @@ function PostList({ currentUser, posts, setPosts }) {
             <PostCard 
                 key={post.id}
                 setPosts={setPosts}
-                {...post}  
+                handleDelete={handleDelete}
+                {...post}
+                post={post}  
             />
         )
     })

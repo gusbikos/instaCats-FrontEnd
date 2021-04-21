@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
+
 function CreatePost({ currentUser, handleAddPost }) {
     const history = useHistory()
     const { photo, caption } = currentUser.posts
