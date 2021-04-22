@@ -6,10 +6,13 @@ import CreateAccount from './CreateAccount'
 import Profile from './Profile'
 import { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
+import { Link } from "react-router-dom"
+
 
 function App() {
   // Will hold the current user state
   const [currentUser, setCurrentUser] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false)
   const history = useHistory()
 
   useEffect(() => {
@@ -32,12 +35,13 @@ function App() {
     console.log(newAccountFromForm)
     setCurrentUser(newAccountFromForm)
   }
-
   
   // console.log("CURRENT-APP", currentUser)
   return (
     <main className="page">
-      <Header currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+      <Header> currentUser={currentUser} setCurrentUser={setCurrentUser}
+      <a href="#" class="fa fa-instagram"></a>
+      </Header>
       <div>
         <Switch>
           <Route exact path="/login">

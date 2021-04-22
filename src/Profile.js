@@ -4,12 +4,13 @@ import EditProfileForm from "./EditProfileForm"
 import PostContainer from "./PostContainer"
 
 function Profile({ setCurrentUser, currentUser }) {
+    console.log(currentUser)
     const [showForm, setShowForm] = useState(false)
     const [showCreatePostForm, setShowCreatePostForm] = useState(false)
     const [posts, setPosts] = useState([])
 
     function handleDelete(deletePost) {
-        console.log(deletePost)
+        // console.log(deletePost)
         const updatePosts = posts.filter((post) => post.id !== deletePost.id)
         setPosts(updatePosts)
     }
@@ -29,7 +30,8 @@ function Profile({ setCurrentUser, currentUser }) {
 
     return (
         <div className="post-container">
-            <h3>Profile</h3>
+            <h3 className="welcome-user">{currentUser.name} </h3> 
+            <img src={currentUser.image} alt={currentUser.name}/>
             <h5> Post Container</h5>
                 <PostContainer currentUser={currentUser} setPosts={setPosts} posts={posts} handleAddPost={handleAddPost} handleDelete={handleDelete}/>
                 <button onClick={handleShowForm}>Edit Profile</button>
