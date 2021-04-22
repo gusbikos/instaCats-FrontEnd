@@ -32,12 +32,12 @@ function PostCard({ id, photo, caption, likes, post, setPosts, handleDelete }) {
 
     return (
         <>
-            <li className="post">
-                <img src={photo} alt={caption} />
+            <div className="postcard">
+                <img className="postimage" src={photo} alt={caption} />
                 <h4>{editCaption}</h4>
                 <button onClick={() => handleLikeClick()}> 😻 {increaseLikes}</button>
                 <button onClick={handleClick}>Edit</button>{ showEdit ? <EditPost  post={post} caption={editCaption} handleDelete={(e) => {handleDelete(e)}} setEditCaption={setEditCaption}/> : null }
-            </li>
+            </div>
     {/* {CommentsList} => {CommentCard} */}
     {/* <AddComment/> */}
         </>

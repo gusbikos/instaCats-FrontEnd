@@ -12,38 +12,14 @@ function Header({setCurrentUser, currentUser}){
 
     return (
         <div className="header">
-            <h1> instaCats! </h1>
-            <nav>
+            <h1 className="title"> instaCats! </h1>
                 {currentUser ? (
                 <h2>Welcome {currentUser.username}</h2>) : (<h2>Please <Link to="/login">Login</Link> or <Link to="/createaccount">Sign Up</Link></h2>)}
                 <Link to="/" onClick={() => handleLogout()}>Logout</Link>
-            </nav>
         </div>
     )
 }
 
-// function NavBar({ user }) {
-//     return (
-//       <header>
-//         <div>
-//           <Link to="/">Home</Link>
-//         </div>
-//         <div>
-//           {user ? (
-//             <>
-//               <Link to="/profile">Profile</Link>
-//               <button>Logout</button>
-//             </>
-//           ) : (
-//             <>
-//               <Link to="/signup">Signup</Link>
-//               <Link to="/login">Login</Link>
-//             </>
-//           )}
-//         </div>
-//       </header>
-//     );
-//   }
 
 
 

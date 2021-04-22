@@ -32,7 +32,7 @@ function PostContainer({ currentUser, setPosts, posts, handleDelete }) {
     }
 
     return(
-        <div className="page">
+        <div className="container">
             {/* <button onClick={}>Show All Posts</button> */}
             <button onClick ={handleShow }>{showAll ? 'Show My Posts' : "Show All"}</button>
             <PostList 

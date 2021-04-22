@@ -36,9 +36,9 @@ function App() {
   
   // console.log("CURRENT-APP", currentUser)
   return (
-    <>
+    <main className="page">
       <Header currentUser={currentUser} setCurrentUser={setCurrentUser}/>
-      <main>
+      <div>
         <Switch>
           <Route exact path="/login">
             <Login setCurrentUser={setCurrentUser} currentUser={currentUser}/>
@@ -54,8 +54,8 @@ function App() {
             </Route>
           </Route>
         </Switch>
-      </main>
-    </>
+      </div>
+    </main>
   );
 }
 

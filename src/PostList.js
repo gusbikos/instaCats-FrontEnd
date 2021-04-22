@@ -6,7 +6,7 @@ function PostList({ currentUser, posts, setPosts, handleDelete }) {
 
     const allPosts = posts.map((post) => {
         return (
-            <div className="cards-list">
+            <div className="photosGrid">
                 <PostCard 
                     key={post.id}
                     setPosts={setPosts}
