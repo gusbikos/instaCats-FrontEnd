@@ -4,10 +4,10 @@ import { useHistory } from "react-router-dom"
 // Create Account Form Goes Here // 
 // Props passed down from App // 
 function CreateAccount({ setCurrentUser, newAccount }) {
-    const [formData, setFormData] = useState({
+    const [createUser, setCreateUser] = useState({
         name: "",
         username: "", 
-        image: "",
+        image: null,
         bio: "",
         password: "",
     })
@@ -17,13 +17,21 @@ function CreateAccount({ setCurrentUser, newAccount }) {
     function handleSubmit(e) {
         e.preventDefault()
 
+        const formData = new FormData();
+        formData.append('name', createUser.name);
+        formData.append('username', createUser.username);
+        formData.append('image', createUser.image);
+        formData.append('bio', createUser.bio);
+        formData.append('password', createUser.password);
+
+
         fetch("http://localhost:4000/users", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify(formData)
+            body: formData
         })
         .then((r) => r.json())
         // Why doesnt response.json work here? Error is:
@@ -38,7 +46,11 @@ function CreateAccount({ setCurrentUser, newAccount }) {
     }
 
     function handleChange(e){
-        setFormData({...formData, [e.target.name]: e.target.value})
+        setCreateUser({ [e.target.name]: e.target.value })
+    }
+
+    function onImageChange(e){ 
+        setCreateUser({ image: e.target.files[0] });
     }
 
 
@@ -52,14 +64,14 @@ function CreateAccount({ setCurrentUser, newAccount }) {
                         type="text"
                         name="username"
                         autoComplete="off"
-                        value={formData.username}
+                        value={createUser.username}
                         onChange={handleChange}
                     />
                 <label>Password</label>
                     <input
                         type="password"
                         name="password"
-                        value={formData.password}
+                        value={createUser.password}
                         onChange={handleChange}
                         autoComplete="current-password"
                     />
@@ -67,21 +79,20 @@ function CreateAccount({ setCurrentUser, newAccount }) {
                     <input
                         type="text"
                         name="name"
-                        value={formData.name}
+                        value={createUser.name}
                         onChange={handleChange}
                     />
                 <label>Image</label>
-                    <input
-                        type="text"
-                        name="image"
-                        value={formData.image}
-                        onChange={handleChange}
+                    <input type="file" 
+                    accept="image/*" 
+                    multiple={false} 
+                    onChange={onImageChange} 
                     />
                 <label>Bio</label>
                     <input
                         type="text"
                         name="bio"
-                        value={formData.bio}
+                        value={createUser.bio}
                         onChange={handleChange}
                     />
                 {/* {errors.map((error) => (

@@ -6,10 +6,20 @@ function PostContainer({ currentUser, setPosts, posts, handleDelete }) {
     const [showAll, setShowAll] = useState(false)
     
     useEffect(() => {
-        fetch("http://localhost:4000/posts")
+        fetch("http://localhost:4000/posts", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        })
         .then((r) => r.json())
         .then((data) => setPosts(data))
-    }, []);
+    }, [setPosts]);
+
+
+
+    const postList = Array.from(posts)
 
     function filteredPosts() {
         if (currentUser) {
@@ -17,7 +27,7 @@ function PostContainer({ currentUser, setPosts, posts, handleDelete }) {
                 return posts
             }
             else {
-                const filterPosts = posts.filter((post) => {
+                const filterPosts = postList.filter((post) => {
                     console.log(post)
                     return post.user_id === currentUser.id
                 })

@@ -3,16 +3,27 @@ import { useHistory } from "react-router-dom";
 
 function EditProfileForm({ setCurrentUser, currentUser }) {
     const history = useHistory()
-    const [formData, setFormData] = useState({
+    const [edit, setEdit] = useState({
         name: "",
         username: "", 
-        image: "",
+        image: null,
         bio: "",
         password: "",
     })
+
+    
         
     function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('name', edit.name);
+        formData.append('username', edit.username);
+        formData.append('image', edit.image);
+        formData.append('bio', edit.bio);
+        formData.append('password', edit.password);
+
+
             
         fetch("http://localhost:4000/profile", {
             method: 'PATCH',
@@ -20,7 +31,7 @@ function EditProfileForm({ setCurrentUser, currentUser }) {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
                 },
-            body: JSON.stringify(formData)
+            body: formData
             })
             .then((r) => r.json())
             .then(user => {
@@ -30,8 +41,12 @@ function EditProfileForm({ setCurrentUser, currentUser }) {
     }
     
         function handleChange(e){
-            setFormData({...formData, [e.target.name]: e.target.value})
+            setEdit({ [e.target.name]: e.target.value })
         }
+
+        function onImageChange(e) { 
+            setEdit({ image: e.target.files[0] });
+        };
     
         function handleDelete(id){
             fetch(`http://localhost:4000/profile/${id}`, {
@@ -55,14 +70,14 @@ function EditProfileForm({ setCurrentUser, currentUser }) {
                             type="text"
                             name="username"
                             autoComplete="off"
-                            value={formData.username}
+                            value={edit.username}
                             onChange={handleChange}
                         />
                     <label>Password</label>
                         <input
                             type="password"
                             name="password"
-                            value={formData.password}
+                            value={edit.password}
                             onChange={handleChange}
                             autoComplete="current-password"
                         />
@@ -70,21 +85,20 @@ function EditProfileForm({ setCurrentUser, currentUser }) {
                         <input
                             type="text"
                             name="name"
-                            value={formData.name}
+                            value={edit.name}
                             onChange={handleChange}
                         />
                     <label>Image</label>
-                        <input
-                            type="text"
-                            name="image"
-                            value={formData.image}
-                            onChange={handleChange}
+                        <input type="file" 
+                            accept="image/*" 
+                            multiple={false} 
+                            onChange={onImageChange} 
                         />
                     <label>Bio</label>
                         <input
                             type="text"
                             name="bio"
-                            value={formData.bio}
+                            value={edit.bio}
                             onChange={handleChange}
                         />
                     {/* {errors.map((error) => (
@@ -99,4 +113,4 @@ function EditProfileForm({ setCurrentUser, currentUser }) {
         )
 }
 
-export default EditProfileForm
+export default EditProfileForm;

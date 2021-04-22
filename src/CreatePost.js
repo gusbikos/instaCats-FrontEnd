@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom"
 function CreatePost({ currentUser, handleAddPost }) {
     const history = useHistory()
     const { photo, caption } = currentUser.posts
-    const [formData, setFormData] = useState({
-        photo: "",
+    const [createPost, setCreatePost] = useState({
+        photo: null,
         caption: "",
         user_id: currentUser.id,
         likes: 0
@@ -14,9 +14,12 @@ function CreatePost({ currentUser, handleAddPost }) {
 
     function handleSubmit(e) {
         e.preventDefault()
+        const formData = new FormData();
+        formData.append('photo', createPost.photo);
+        formData.append('caption', createPost.caption);
 
-        setFormData ({ 
-            photo: "", 
+        setCreatePost ({ 
+            photo: null, 
             caption: ""
         })
 
@@ -26,7 +29,7 @@ function CreatePost({ currentUser, handleAddPost }) {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(formData)
+            body: formData
         })
         .then((r) => r.json())
         .then((post) => {
@@ -39,26 +42,30 @@ function CreatePost({ currentUser, handleAddPost }) {
     }
 
     function handleChange(e){
-        setFormData({...formData, [e.target.name]: e.target.value})
+        setCreatePost({ [e.target.name]: e.target.value })
     }
     
+    function onImageChange(e){ 
+        setCreatePost({ photo: e.target.files[0] });
+    };
+
     return (
         <div>
             <h1>Create Post Form</h1>        
                 <form onSubmit={handleSubmit}>
                     <label>Photo</label>
-                        <input
-                            type="text"
-                            name="photo"
-                            value={formData.photo}
-                            onChange={handleChange}
+                        <input 
+                            type="file" 
+                            accept="image/*" 
+                            multiple={false} 
+                            onChange={onImageChange} 
                         />
                     <label>Caption</label>
                         <input
                             type="text"
                             name="caption"
                             autoComplete="off"
-                            value={formData.caption}
+                            value={setCreatePost.caption}
                             onChange={handleChange}
                         />
                         <input type="submit" value="Submit" /> 
