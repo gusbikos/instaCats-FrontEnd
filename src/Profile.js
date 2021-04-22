@@ -4,6 +4,7 @@ import EditProfileForm from "./EditProfileForm"
 import PostContainer from "./PostContainer"
 
 function Profile({ setCurrentUser, currentUser }) {
+
     const [showForm, setShowForm] = useState(false)
     const [showCreatePostForm, setShowCreatePostForm] = useState(false)
     const [posts, setPosts] = useState([])
@@ -29,14 +30,17 @@ function Profile({ setCurrentUser, currentUser }) {
 
     return (
         <div className="post-container">
-            <h3>Profile</h3>
-            <h5> Post Container</h5>
-                <PostContainer currentUser={currentUser} setPosts={setPosts} posts={posts} handleAddPost={handleAddPost} handleDelete={handleDelete}/>
-                <button onClick={handleShowForm}>Edit Profile</button>
-                {showForm ? <EditProfileForm setCurrentUser={setCurrentUser} currentUser={currentUser}/> : null}
+            <h2>{currentUser.name}</h2>
+            <p>{currentUser.bio}</p>
+            <button onClick={handleShowForm}>Edit Profile</button>
+            {showForm ? <EditProfileForm setCurrentUser={setCurrentUser} currentUser={currentUser}/> : null}
+            
             <h4>Create Post</h4>
                 <button onClick={handleShowCreate}>Add Post</button>
                 {showCreatePostForm ? <CreatePost currentUser={currentUser} handleAddPost={handleAddPost}/> : null}
+            
+                <PostContainer currentUser={currentUser} setPosts={setPosts} posts={posts} handleAddPost={handleAddPost} handleDelete={handleDelete}/>
+                
         </div>
     )
 }

@@ -47,3 +47,8 @@ div .container {
   padding: 10px;
   margin: 20px;
 }
+
+p .bold {
+  font-size: 46px;
+  font-weight: bold;
+}

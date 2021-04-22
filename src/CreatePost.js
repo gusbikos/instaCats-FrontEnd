@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 
 function CreatePost({ currentUser, handleAddPost }) {
     const history = useHistory()
-    const { photo, caption } = currentUser.posts
+    // const { photo, caption } = currentUser.posts
     const [createPost, setCreatePost] = useState({
         photo: null,
         caption: "",

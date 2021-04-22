@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './Header'
 import Login from './Login'
@@ -26,7 +25,7 @@ function App() {
       history.push("/profile")
       })
     }
-  }, []);
+  }, [history]);
 
   function newAccount(newAccountFromForm){
     console.log(newAccountFromForm)
