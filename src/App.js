@@ -39,9 +39,7 @@ function App() {
   // console.log("CURRENT-APP", currentUser)
   return (
     <main className="page">
-      <Header> currentUser={currentUser} setCurrentUser={setCurrentUser}
-      <a href="#" class="fa fa-instagram"></a>
-      </Header>
+      <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <div>
         <Switch>
           <Route exact path="/login">
@@ -53,9 +51,7 @@ function App() {
           <Route exact path="/profile">
             <Profile currentUser={currentUser} setCurrentUser={setCurrentUser}/>
           </Route>
-          <Route>
-            <Route path="/">
-            </Route>
+          <Route path="/">
           </Route>
         </Switch>
       </div>

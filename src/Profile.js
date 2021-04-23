@@ -30,15 +30,18 @@ function Profile({ setCurrentUser, currentUser }) {
 
     return (
         <div className="post-container">
+            {currentUser ? ( <>
             <h3 className="welcome-user">{currentUser.name} </h3> 
-            <img src={currentUser.image} alt={currentUser.name}/>
-            <h5> Post Container</h5>
-                <PostContainer currentUser={currentUser} setPosts={setPosts} posts={posts} handleAddPost={handleAddPost} handleDelete={handleDelete}/>
+            <img className="profilepic" src={currentUser.image} alt={currentUser.name}/> <p>{currentUser.bio}</p> </>) : (null)}
+            <br/>
                 <button onClick={handleShowForm}>Edit Profile</button>
                 {showForm ? <EditProfileForm setCurrentUser={setCurrentUser} currentUser={currentUser}/> : null}
-            <h4>Create Post</h4>
                 <button onClick={handleShowCreate}>Add Post</button>
                 {showCreatePostForm ? <CreatePost currentUser={currentUser} handleAddPost={handleAddPost}/> : null}
+                {currentUser ? (
+                <PostContainer currentUser={currentUser} setPosts={setPosts} posts={posts} handleAddPost={handleAddPost} handleDelete={handleDelete}/>
+                ) : (null)}
+
         </div>
     )
 }

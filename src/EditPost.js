@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-// import {useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 function EditPost({post, caption, handleDelete, setEditCaption}) {
     console.log(post)
     const [formData, setFormData] = useState("")
 
-    // const history = useHistory();
+    const history = useHistory();
 
     function handleChange(e){
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -36,7 +36,7 @@ function EditPost({post, caption, handleDelete, setEditCaption}) {
         .then((r) => r.json())
         .then((post) => {
             handleDelete(post);
-            // history.push("/profile");
+            history.push("./profile");
         })
         
     }

@@ -3,10 +3,11 @@ import PostCard from "./PostCard"
 
 function PostList({ currentUser, posts, setPosts, handleDelete }) {
     
+    const postList = Array.from(posts)
 
-    const allPosts = posts.map((post) => {
+    const allPosts = postList.map((post) => {
         return (
-            <div className="photosGrid">
+            <>
                 <PostCard 
                     key={post.id}
                     setPosts={setPosts}
@@ -14,7 +15,7 @@ function PostList({ currentUser, posts, setPosts, handleDelete }) {
                     {...post}
                     post={post}  
                 />
-            </div>
+            </>
         )
     })
     // console.log(allPosts)

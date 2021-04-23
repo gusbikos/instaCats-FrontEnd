@@ -11,13 +11,15 @@ function PostContainer({ currentUser, setPosts, posts, handleDelete }) {
         .then((data) => setPosts(data))
     }, []);
 
+    const postList = Array.from(posts)
+
     function filteredPosts() {
         if (currentUser) {
             if (showAll) {
                 return posts
             }
             else {
-                const filterPosts = posts.filter((post) => {
+                const filterPosts = postList.filter((post) => {
                     // console.log(post)
                     return post.user_id === currentUser.id
                 })
@@ -33,7 +35,9 @@ function PostContainer({ currentUser, setPosts, posts, handleDelete }) {
 
     return(
         <div className="container">
+            <div className="showbutton">
             <button onClick ={handleShow }>{showAll ? 'Show My Posts' : "Show All"}</button>
+            </div>
             <PostList 
                 posts={filteredPosts()} 
                 setPosts={setPosts} 
